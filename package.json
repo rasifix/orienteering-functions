@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "functions-framework --target=event"
   },
   "author": "Simon Raess <raess.simon@gmail.com> (https://github.com/rasifix)",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.20.0"
+    "@google-cloud/functions-framework": "^1.7.1",
+    "axios": "^0.20.0",
+    "iconv-lite": "^0.6.2"
   }
 }
