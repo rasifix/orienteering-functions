@@ -25,14 +25,13 @@ function reformatSplitTime(str) {
     return formatTime(parseTime(str));
 }
 
-module.exports = (req, res) => {
+module.exports.event = (req, res) => {
   if (req.method !== 'GET') {
     res.status(405);
     res.json({'message': 'HTTP method ' + req.method + ' not supported!'});
     return;
   }
 
-  console.log(req.path.substring(1));
   const id = req.path.substring(1).length > 0 ? req.path.substring(1) : req.query.id;
   axios.get('https://o-l.ch/cgi-bin/results', {
     responseType: 'arraybuffer',
@@ -45,9 +44,6 @@ module.exports = (req, res) => {
     }
   }).then((response) => {
     var converted = iconv.decode(response.data, 'cp1252');
-
-    console.log(response);
-    console.log(converted);
 
     // interpret unknown event - SOLV does not properly do that for us...
     if (response.status === 404 || converted.substring(0, 14) === '<!DOCTYPE html') {

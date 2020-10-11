@@ -1,6 +1,6 @@
 const axios = require("axios").default;
 
-exports.events = (req, res) => {
+module.exports.events = (req, res) => {
     var year = parseInt(req.query.year) || new Date().getFullYear();
   
     axios
