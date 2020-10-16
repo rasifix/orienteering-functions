@@ -60,7 +60,7 @@ module.exports.event = (req, res) => {
       categories: []
     };
     
-    var lines = converted.split('\n');
+    var lines = converted.split('\n').slice(1);
     
     lines.forEach(function(line, idx) {
       var tokens = line.split(';');
